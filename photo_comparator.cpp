@@ -15,7 +15,7 @@
 
 #ifdef __unix__
 
-#define PATH_TO_DB ""../photo_comparator/db/database.db""
+#define PATH_TO_DB "../photo_comparator/db/database.db"
 
 #elif defined(_WIN32) || defined(WIN32)
 
