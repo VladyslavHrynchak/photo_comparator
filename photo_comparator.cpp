@@ -9,11 +9,19 @@
 #include <QTimer>
 
 #include <QtSql>
-#include <QSqlDatabase>
 #include <QCryptographicHash>
 
 #include <QLabel>
-#include <iostream>
+
+#ifdef __unix__
+
+#define PATH_TO_DB ""../photo_comparator/db/database.db""
+
+#elif defined(_WIN32) || defined(WIN32)
+
+#define PATH_TO_DB "..\\photo_comparator\\db\\database.db"
+
+#endif
 
 Photo_Comparator::Photo_Comparator(QWidget *parent)
     : QMainWindow(parent)
@@ -23,11 +31,11 @@ Photo_Comparator::Photo_Comparator(QWidget *parent)
 
     load_data_conection = QSqlDatabase::addDatabase("QSQLITE", "load_data_from_database");
 
-    load_data_conection.setDatabaseName("..\\photo_comparator\\db\\database.db");
+    load_data_conection.setDatabaseName(PATH_TO_DB);
     load_data_conection.open();
 
     insert_data_connection = QSqlDatabase::addDatabase("QSQLITE");
-    insert_data_connection.setDatabaseName("..\\photo_comparator\\db\\database.db");
+    insert_data_connection.setDatabaseName(PATH_TO_DB);
     insert_data_connection.open();
 
     gridLayout = new QGridLayout;
@@ -152,7 +160,6 @@ void Photo_Comparator::insert_data_to_db()
     } else {
         qDebug() << "Error: Unable to insert data." << query.lastError();
     }
-
 }
 
 void Photo_Comparator::load_data_from_database()

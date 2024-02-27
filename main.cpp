@@ -1,5 +1,4 @@
 #include "photo_comparator.h"
-
 #include <QApplication>
 
 int main(int argc, char *argv[])

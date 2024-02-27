@@ -2,14 +2,11 @@
 #define PHOTO_COMPARATOR_H
 
 #include <QMainWindow>
-
 #include <QGridLayout>
 #include <QFrame>
 #include <QThread>
 
-
 #include <QSqlDatabase>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Photo_Comparator; }
@@ -71,6 +68,5 @@ private:
     QSqlDatabase insert_data_connection;
 
     Ui::Photo_Comparator *ui;
-
 };
 #endif // PHOTO_COMPARATOR_H
